@@ -9,7 +9,7 @@ services:
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
 
-  redis8:
+  redis80:
     image: docker.io/bitnami/redis:8.0
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
@@ -17,7 +17,7 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - 'redis8_data:/bitnami/redis/data'
+      - 'redis80_data:/bitnami/redis/data'
 
   elasticsearch9:
     image: docker.io/bitnami/elasticsearch:9
