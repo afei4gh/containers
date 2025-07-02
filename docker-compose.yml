@@ -29,10 +29,29 @@ services:
     volumes:
       - 'elasticsearch9_data:/bitnami/elasticsearch/data'
 
+  rabbitmq41:
+    image: docker.io/bitnami/rabbitmq:4.1
+    ports:
+      - '4369:4369'
+      - '5551:5551'
+      - '5552:5552'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
+    environment:
+      - RABBITMQ_USERNAME=rabbitmq
+      - RABBITMQ_PASSWORD=rabbitmq
+      - RABBITMQ_SECURE_PASSWORD=yes
+      - RABBITMQ_LOGS=-
+    volumes:
+      - 'rabbitmq41_data:/bitnami/rabbitmq/mnesia'
+
 volumes:
   mysql93_data:
     driver: local
   redis8_data:
     driver: local
   elasticsearch9_data:
+    driver: local
+  rabbitmq41_data:
     driver: local
