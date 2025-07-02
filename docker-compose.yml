@@ -81,9 +81,9 @@ services:
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
 
 volumes:
-  mongodb80_data:
-    driver: local
   mysql93_data:
+    driver: local
+  mongodb80_data:
     driver: local
   redis80_data:
     driver: local
