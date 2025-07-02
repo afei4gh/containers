@@ -1,0 +1,38 @@
+services:
+
+  mysql93:
+    image: docker.io/bitnami/mysql:9.3
+    ports:
+      - '3306:3306'
+    volumes:
+      - 'mysql93_data:/bitnami/mysql/data'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+
+  redis8:
+    image: docker.io/bitnami/redis:8.0
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis8_data:/bitnami/redis/data'
+
+  elasticsearch9:
+    image: docker.io/bitnami/elasticsearch:9
+    environment:
+      - ELASTICSEARCH_PASSWORD=elastic
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    volumes:
+      - 'elasticsearch9_data:/bitnami/elasticsearch/data'
+
+volumes:
+  mysql93_data:
+    driver: local
+  redis8_data:
+    driver: local
+  elasticsearch9_data:
+    driver: local
