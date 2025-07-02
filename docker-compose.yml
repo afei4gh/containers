@@ -55,31 +55,6 @@ services:
     volumes:
       - 'rabbitmq41_data:/bitnami/rabbitmq/mnesia'
 
-  zookeeper39:
-    image: docker.io/bitnami/zookeeper:3.9
-    ports:
-      - '2181:2181'
-    volumes:
-      - 'zookeeper39_data:/bitnami/zookeeper'
-    environment:
-      - ALLOW_ANONYMOUS_LOGIN=yes
-
-  kafka40:
-    image: docker.io/bitnami/kafka:4.0
-    ports:
-      - "9092:9092"
-    volumes:
-      - "kafka40_data:/bitnami"
-    environment:
-      - KAFKA_CFG_NODE_ID=0
-      - KAFKA_CFG_PROCESS_ROLES=controller,broker
-      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka40:9093
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
-      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
-      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
-
 volumes:
   mysql93_data:
     driver: local
@@ -90,8 +65,4 @@ volumes:
   elasticsearch9_data:
     driver: local
   rabbitmq41_data:
-    driver: local
-  zookeeper39_data:
-    driver: local
-  kafka40_data:
     driver: local
